@@ -1,0 +1,16 @@
+@(title: String, errorMessage: String, selectFrom: Form[MailController.SelectMail])
+
+@main("Welcome to Play 2.1") {
+
+    <h1>@title</h1>
+    @errorMessage
+    @helper.form(action = routes.MailController.selectAction) {
+        @helper.inputRadioGroup(
+            selectFrom("mailType"),
+            options = Seq("0" -> "パスワード設定メール",
+                "1" -> "お知らせメール"),
+            args = '_label -> "メール種類",
+            '_help -> "")
+        <input type="submit" value="メール選択">
+    }
+}

@@ -1,0 +1,59 @@
+@import consts.MailConsts
+@import utilities.ViewHelperUtilites
+@(title: String, inputForm: Form[MailController.InputMail], inputFormData: Map[String, String])
+
+@main("Welcome to Play 2.1") {
+
+    <h1>@title</h1>
+
+    @helper.form(action = routes.MailController.previewAction) {
+
+        <dl class=" " id="title_field">
+            <dt>メールタイトル</dt>
+            <dd>
+                @helper.inputTextSimple("title", inputFormData)
+            </dd>
+        </dl>
+
+        <dl class=" " id="content_field">
+            <dt>本文</dt>
+            <dd>
+            @helper.textareaSimple("content", inputFormData, Map("rows" -> "8", "cols" -> "100"))
+            </dd>
+        </dl>
+
+        <dl class=" " id="signature_field">
+            <dt>署名</dt>
+            <dd>
+            @helper.textareaSimple("signature", inputFormData, Map("rows" -> "8", "cols" -> "100"))
+            </dd>
+        </dl>
+
+        <dl class=" " id="mailType_field">
+            <dt>メール種類</dt>
+            <dd>
+                <span class="buttonset" id="mailType">
+                    @helper.radioSimple("mailType", MailConsts.textOfMailTypes, inputFormData)
+                    <label for="mailType_0">@(MailConsts.textValuelOfMailTypes)</label>
+                    @helper.radioSimple("mailType", MailConsts.htmlOfMailTypes, inputFormData)
+                    <label for="mailType_1">@(MailConsts.htmlValuelOfMailTypes)</label>
+                </span>
+            </dd>
+        </dl>
+
+        <dl class=" " id="sendType_field">
+        <dt>送信種別</dt>
+            <dd>
+                <span class="buttonset" id="sendType">
+                    @helper.radioSimple("sendType", MailConsts.immediateOfSendTypes, inputFormData, Map("class" -> "hoge"))
+                    <label for="sendType_0">@(MailConsts.immediateValueOfSendTypes)</label>
+                    @helper.radioSimple("sendType", MailConsts.timerOfSendTypes, inputFormData, Map("class" -> "hoge"))
+                    <label for="sendType_1">@(MailConsts.timerValueOfSendTypes)</label>
+                </span>
+            </dd>
+        </dl>
+
+        <input type="submit">
+    }
+
+}

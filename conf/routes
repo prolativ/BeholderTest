@@ -1,0 +1,22 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET         /                            controllers.Application.index
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file                controllers.Assets.at(path="/public", file)
+
+POST        /send                        controllers.Application.send
+GET         /add                         controllers.Application.add
+
+# Mail
+GET         /mail                        controllers.MailController.index
+GET         /mail/input/:mailType        controllers.MailController.input(mailType : Int)
+POST        /mail/preview                controllers.MailController.previewAction
+GET         /mail/preview                controllers.MailController.preview
+#POST        /mail/sendPreview            controllers.MailController.sendPeviewAction
+#GET         /mail/sendPreview            controllers.MailController.sendPreview
+
+POST        /mail                        controllers.MailController.selectAction

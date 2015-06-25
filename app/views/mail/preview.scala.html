@@ -1,0 +1,37 @@
+@import controllers.MailController.InputMail
+@(title: String, inputData: InputMail)
+
+@main("Welcome to Play 2.1") {
+
+    <h1>@title</h1>
+
+    <table>
+        <tr>
+            <td>タイトル</td>
+            <td>@inputData.title</td>
+        </tr>
+        <tr>
+            <td>メール種別</td>
+            <td>@inputData.mailType</td>
+        </tr>
+        <tr>
+            <td>送信種別</td>
+            <td>@inputData.sendType</td>
+        </tr>
+        <tr>
+            <td>本文</td>
+            <td>@inputData.title</td>
+        </tr>
+        <tr>
+            <td>署名</td>
+            <td>@inputData.signature</td>
+        </tr>
+    </table>
+
+    <input type="hidden" value="@inputData.title" name="title">
+    <input type="hidden" value="@inputData.content" name="content">
+    <input type="hidden" value="@inputData.mailType" name="mailType">
+    <input type="hidden" value="@inputData.sendType" name="sendType">
+    <input type="hidden" value="@inputData.signature" name="signature">
+
+}

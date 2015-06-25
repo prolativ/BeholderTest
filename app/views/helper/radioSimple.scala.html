@@ -1,0 +1,3 @@
+@(name: String, value: String, formData: Map[String, String], options: Map[String, String] = Map[String, String]())
+
+<input type="radio" name="@name" value="@value" @(if(formData.getOrElse(name, "") == value) "checked") @for( (key, value) <- options ) { @key="@value" } />
